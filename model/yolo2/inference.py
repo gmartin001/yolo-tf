@@ -139,6 +139,7 @@ def darknet(net, classes, num_anchors, training=False, center=True):
 
         # layer 29: 3x3 convolve 13x13x1280 to 13x13x1024
         net = slim.layers.conv2d(net, 1024, scope='%s/conv%d' % (scope, index))
+        # index += 1
 
     # layer 30: convolve with channels = #Anchors * (5+#classes)
     net = slim.layers.conv2d(net, num_anchors * (5 + classes), kernel_size=[1, 1], activation_fn=None, scope='%s/conv' % scope)
